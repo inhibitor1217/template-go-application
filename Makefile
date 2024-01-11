@@ -56,3 +56,7 @@ clean-gen:
 
 clean-target:
 	rm -rf ${TARGET_DIR}
+
+test: build
+	go clean -testcache
+	go test 'go list ./... | grep -v ./generated'

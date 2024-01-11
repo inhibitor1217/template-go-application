@@ -2,3 +2,25 @@
 
 # This is a pre-commit hook that runs the tests and checks before a commit is
 # made. If any of the tests or checks fail, the commit is aborted.
+
+MAKE=$(which make)
+GO=$(which go)
+GOIMPORTS=$(which goimports)
+
+set -e
+
+# If goimports is not installed, install it.
+if [ -z "$GOIMPORTS" ]; then
+  printf "Installing goimports...\n"
+  ${GO} install golang.org/x/tools/cmd/goimports
+fi
+
+printf "Running pre-commit checks...\n"
+
+# Lint
+${GO} fmt ./...
+${GO} vet ./...
+${GOIMPORTS} -w $(find . -type f -name '*.go' -not -path "./generated/*")
+
+# Tests
+STAGE=test ${MAKE} test
