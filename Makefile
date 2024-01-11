@@ -59,4 +59,4 @@ clean-target:
 
 test: build
 	go clean -testcache
-	go test 'go list ./... | grep -v ./generated'
+	go test `go list ./... | grep -v ./generated`
