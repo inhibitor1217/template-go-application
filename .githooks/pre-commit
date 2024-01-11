@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+# This is a pre-commit hook that runs the tests and checks before a commit is
+# made. If any of the tests or checks fail, the commit is aborted.

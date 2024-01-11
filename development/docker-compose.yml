@@ -1,0 +1,12 @@
+version: '3.8'
+name: template-go-application # change this to your project name
+
+# This is the docker-compose file for local development.
+# This will be used to setup local environment. (e.g. local database, etc.)
+# Fill out the containers and services for your application.
+#
+# services:
+#   redis:
+#     image: redis:7
+#     ports:
+#       - 6379:6379
